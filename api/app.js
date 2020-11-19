@@ -4,9 +4,6 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 
-
-const productRoutes = require('./routes/products');
-const orderRoutes = require('./routes/orders');
 const userRoutes = require('./routes/user');
 const usersRoutes = require('./routes/users');
 const avatarRoutes = require('./routes/avatar');
@@ -45,8 +42,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/products', productRoutes);
-app.use('/orders', orderRoutes);
 app.use("/user", userRoutes);
 app.use("/users", usersRoutes);
 app.use("/avatar", avatarRoutes);

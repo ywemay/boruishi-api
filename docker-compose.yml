@@ -1,23 +1,23 @@
 version: '3.1'
 services:
 
-  boruishi-admin:
-    build:
-      # context: ./app
-      context: ./admin
-      dockerfile: Dockerfile
-    image: boruishi/admin
-    container_name: boruishi-admin
-    ports:
-      - 9528:9528
-    volumes:
-      - ./admin:/home/node/app
-    # command: "npm run dev"
-    # command: "http-server dist"
-    links:
-      - cocoapi
-    environment:
-      API_LINK: 'http://boruishi-api:3000'
+  # boruishi-admin:
+  #   build:
+  #     # context: ./app
+  #     context: ./admin
+  #     dockerfile: Dockerfile
+  #   image: boruishi/admin
+  #   container_name: boruishi-admin
+  #   ports:
+  #     - 9528:9528
+  #   volumes:
+  #     - ./admin:/home/node/app
+  #   # command: "npm run dev"
+  #   # command: "http-server dist"
+  #   links:
+  #     - boruishi-api
+  #   environment:
+  #     API_LINK: 'http://boruishi-api:3000'
 
   boruishi-api:
     build:
@@ -30,9 +30,9 @@ services:
     volumes:
       - ./api:/home/node/app
     links:
-      - cocomongosrv
+      - boruishi-mongo
     environment:
-      DB_LINK: 'mongodb://cococtnr:cocopass@cocomongosrv:27017/coco'
+      DB_LINK: 'mongodb://boruishi:boruishipass@boruishi-mongo:27017/coco'
       JWT_KEY: "anJWTTokenSoThatCanEncrypt"
 
   boruishi-mongo:
